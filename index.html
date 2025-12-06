@@ -3,32 +3,27 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nhà Bếp Nhỏ – Công Thức Nấu Ăn</title>
+  <title>Nhà Bếp Nhỏ – Trang chủ</title>
 
-  <!-- GOOGLE FONTS: Parisienne (tiêu đề), Lora (nội dung) -->
-  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
     :root {
-      /* Pastel tươi sáng hơn */
-      --bg: #fff7f2;
-      --card: #ffffff;
-      --p1: #ffe1e8; /* pastel hồng */
-      --p2: #fdf0c4; /* pastel vàng */
-      --p3: #e3f4f4; /* pastel xanh mint */
-      --p4: #e8e1ff; /* pastel tím */
-      --text-main: #4b3b36;
-      --text-muted: #8f8077;
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
       --shadow: 0 20px 40px rgba(0,0,0,0.06);
-      --radius: 22px;
     }
 
     body {
       margin: 0;
       font-family: "Lora", serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.7;
+      background: #fff9f3;
+      color: var(--text);
     }
 
     .container {
@@ -37,278 +32,160 @@
       padding: 24px;
     }
 
-    /* HEADER */
-    header {
-      display: flex;
-      gap: 20px;
-      align-items: center;
+    /* NAVBAR */
+    nav {
       background: white;
-      padding: 18px 26px;
-      border-radius: 20px;
+      padding: 16px 24px;
+      border-radius: 18px;
       box-shadow: var(--shadow);
       border: 1px solid #ecdcd3;
-      position: sticky;
-      top: 10px;
-      z-index: 10;
-      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .logo {
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, var(--p1), var(--p4));
-      color: white;
-      font-family: "Parisienne", cursive;
-      font-size: 28px;
-    }
-
-    .title-block .title {
-      font-family: "Parisienne", cursive;
-      font-size: 34px;
-      margin-bottom: 4px;
-    }
-    .title-block .subtitle {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-    }
-
-    /* SECTION TITLE */
-    .section-title {
-      font-family: "Parisienne", cursive;
+      font-family: "Great Vibes", cursive;
       font-size: 32px;
-      margin-top: 50px;
-      margin-bottom: 20px;
-      text-align: center;
     }
 
-    /* GRID 3 CÔNG THỨC */
-    .recipe-grid {
+    .menu a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .banner {
+      margin-top: 40px;
+      padding: 40px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--p1), var(--p2), white);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .banner h1 {
+      font-family: "Great Vibes", cursive;
+      font-size: 48px;
+      margin-bottom: 5px;
+    }
+
+    .banner p {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .category-section {
+      margin-top: 50px;
+    }
+
+    .cat-title {
+      font-family: "Great Vibes", cursive;
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 26px;
+      gap: 24px;
     }
 
-    /* RECIPE CARD */
-    .recipe-card {
+    .cat-card {
       background: white;
-      border-radius: var(--radius);
-      padding: 18px 20px 24px;
+      padding: 20px;
+      border-radius: 22px;
       box-shadow: var(--shadow);
       border: 1px solid #ecdcd3;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
     }
 
-    .recipe-image {
+    .cat-card img {
       width: 100%;
       height: 220px;
-      border-radius: var(--radius);
       object-fit: cover;
-      background: #eee;
-      margin-bottom: 16px;
-    }
-
-    .recipe-name {
-      font-family: "Parisienne", cursive;
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .chip {
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      background: var(--p3);
-      border: 1px solid #d3ebe8;
-      color: #527a75;
-    }
-
-    .intro {
-      font-size: 14px;
-      color: var(--text-main);
+      border-radius: 18px;
       margin-bottom: 14px;
     }
 
-    /* LISTS */
-    ul.pretty {
-      padding-left: 18px;
-      margin-bottom: 14px;
-    }
-    ul.pretty li {
-      margin-bottom: 6px;
+    .cat-card h3 {
+      font-family: "Great Vibes", cursive;
+      font-size: 30px;
+      margin-bottom: 4px;
     }
 
-    ol.steps {
-      padding-left: 18px;
-      margin-bottom: 14px;
-    }
-    ol.steps li {
-      margin-bottom: 6px;
-    }
-
-    /* NOTE */
-    .note {
-      font-size: 13px;
-      background: var(--p3);
-      border: 1px solid #cfe7e4;
-      padding: 10px 12px;
-      border-radius: 14px;
-      color: #5b7f7b;
+    .cat-card:hover {
+      transform: scale(1.02);
+      transition: 0.2s;
     }
 
     footer {
       margin-top: 50px;
       text-align: center;
+      color: var(--muted);
       font-size: 13px;
-      color: var(--text-muted);
     }
-
   </style>
-</head>
 
+</head>
 <body>
 
 <div class="container">
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">NB</div>
-    <div class="title-block">
-      <div class="title">Nhà Bếp Nhỏ</div>
-      <div class="subtitle">Công thức cho những ngày dịu dàng</div>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Nhà Bếp Nhỏ</div>
+    <div class="menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html">Món mặn</a>
+      <a href="mon-ngot.html">Món ngọt</a>
+      <a href="do-uong.html">Đồ uống</a>
     </div>
-  </header>
+  </nav>
 
-  <!-- SAVORY SECTION -->
-  <div class="section-title">Món mặn</div>
+  <!-- BANNER -->
+  <section class="banner">
+    <h1>Góc bếp cho những ngày dịu dàng</h1>
+    <p>Nơi lưu giữ những công thức nhỏ xinh – từ bữa ăn gia đình đến món tráng miệng ngọt ngào.</p>
+  </section>
 
-  <div class="recipe-grid">
+  <!-- CATEGORY PREVIEW -->
+  <section class="category-section">
+    <div class="cat-title">Khám phá theo danh mục</div>
 
-    <!-- RECIPE 1: MÓN MẶN -->
-    <div class="recipe-card">
-      <img class="recipe-image" src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg" />
-      <div class="recipe-name">Cơm gà sốt bơ tỏi</div>
+    <div class="cat-grid">
 
-      <div class="chips">
-        <div class="chip">25 phút</div>
-        <div class="chip">2 người</div>
-        <div class="chip">Dễ</div>
-      </div>
+      <a class="cat-card" href="mon-man.html">
+        <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg"/>
+        <h3>Món mặn</h3>
+        <p>Những hương vị đậm đà, ấm áp.</p>
+      </a>
 
-      <p class="intro">Món cơm gà thơm ngậy mùi bơ tỏi, dễ làm và phù hợp cho bữa trưa vội.</p>
+      <a class="cat-card" href="mon-ngot.html">
+        <img src="https://images.pexels.com/photos/3026809/pexels-photo-3026809.jpeg"/>
+        <h3>Món ngọt</h3>
+        <p>Những miếng ngọt ngào tan trong miệng.</p>
+      </a>
 
-      <strong>Nguyên liệu</strong>
-      <ul class="pretty">
-        <li>200g ức gà</li>
-        <li>1 muỗng bơ</li>
-        <li>3 tép tỏi băm</li>
-        <li>Cơm nóng</li>
-      </ul>
+      <a class="cat-card" href="do-uong.html">
+        <img src="https://images.pexels.com/photos/594661/pexels-photo-594661.jpeg"/>
+        <h3>Đồ uống</h3>
+        <p>Thanh mát – dịu nhẹ – dễ pha.</p>
+      </a>
 
-      <strong>Cách làm</strong>
-      <ol class="steps">
-        <li>Áp chảo gà cho vàng đều.</li>
-        <li>Thêm bơ + tỏi, đảo thơm.</li>
-        <li>Đổ sốt lên cơm và thưởng thức.</li>
-      </ol>
-
-      <div class="note">Gợi ý: thêm hành lá hoặc ớt bột cho món ăn bắt mắt hơn.</div>
     </div>
-
-  </div>
-
-
-  <!-- DESSERT SECTION -->
-  <div class="section-title">Món ngọt</div>
-
-  <div class="recipe-grid">
-
-    <!-- RECIPE 2: MÓN NGỌT -->
-    <div class="recipe-card">
-      <img class="recipe-image" src="https://images.pexels.com/photos/3026809/pexels-photo-3026809.jpeg"/>
-      <div class="recipe-name">Bánh pancake chuối</div>
-
-      <div class="chips">
-        <div class="chip">15 phút</div>
-        <div class="chip">Dễ</div>
-      </div>
-
-      <p class="intro">Bánh mềm, ngọt tự nhiên từ chuối – phù hợp cho bữa sáng nhẹ nhàng.</p>
-
-      <strong>Nguyên liệu</strong>
-      <ul class="pretty">
-        <li>1 quả chuối chín</li>
-        <li>1 trứng</li>
-        <li>40g yến mạch</li>
-      </ul>
-
-      <strong>Cách làm</strong>
-      <ol class="steps">
-        <li>Nghiền chuối.</li>
-        <li>Trộn cùng trứng + yến mạch.</li>
-        <li>Rán lửa nhỏ đến khi vàng.</li>
-      </ol>
-
-      <div class="note">Thêm mật ong hoặc trái cây để tăng vị ngon.</div>
-    </div>
-
-  </div>
-
-
-  <!-- DRINKS SECTION -->
-  <div class="section-title">Đồ uống</div>
-
-  <div class="recipe-grid">
-
-    <!-- RECIPE 3: ĐỒ UỐNG -->
-    <div class="recipe-card">
-      <img class="recipe-image" src="https://images.pexels.com/photos/594661/pexels-photo-594661.jpeg"/>
-      <div class="recipe-name">Trà đào cam sả</div>
-
-      <div class="chips">
-        <div class="chip">10 phút</div>
-        <div class="chip">Giải nhiệt</div>
-      </div>
-
-      <p class="intro">Thức uống thanh mát kết hợp mùi thơm của sả và vị ngọt dịu của đào.</p>
-
-      <strong>Nguyên liệu</strong>
-      <ul class="pretty">
-        <li>Trà đen</li>
-        <li>Đào ngâm</li>
-        <li>Sả đập dập</li>
-        <li>Cam tươi</li>
-      </ul>
-
-      <strong>Cách làm</strong>
-      <ol class="steps">
-        <li>Nấu trà cùng sả.</li>
-        <li>Cho đá, cam và đào vào ly.</li>
-        <li>Đổ trà lên và khuấy đều.</li>
-      </ol>
-
-      <div class="note">Thêm mật ong nếu muốn vị ngọt tự nhiên hơn.</div>
-    </div>
-
-  </div>
+  </section>
 
   <footer>
-    Thiết kế bởi bạn – hãy thêm công thức theo phong cách của riêng bạn!
+    © 2025 Nhà Bếp Nhỏ – Thiết kế bởi bạn.
   </footer>
 
 </div>
 
 </body>
 </html>
-
