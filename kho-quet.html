@@ -1,244 +1,231 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kho Quet</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kho quẹt – Nhà Bếp Nhỏ</title>
 
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
 
-<style>
-:root {
-  --bg: #faf7f2;
-  --card: #ffffff;
-  --primary: #d08d67;
-  --accent: #f2c6ae;
-  --muted: #8d837a;
-  --shadow: rgba(0,0,0,0.09);
-}
+  <style>
+    :root {
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+      --accent: #f3bccc;
+    }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  font-family: "Lora", serif;
-  color: #3a332e;
-}
+    * { box-sizing: border-box; }
 
-/* CONTAINER */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 16px;
-  position: relative;
-}
+    body {
+      margin: 0;
+      font-family: "Lora", serif;
+      background: linear-gradient(135deg, #fff9f3, #fdefff);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+      position: relative;
+    }
 
-.logo {
-  font-family: "Great Vibes", cursive;
-  font-size: 32px;
-  color: var(--primary);
-}
+    /* DOODLES */
+    .doodle {
+      position: absolute;
+      opacity: 0.16;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .doodle.d1 {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      border: 2px dashed #f3bccc;
+      top: 10px; left: -40px;
+      animation: float 9s ease-in-out infinite;
+    }
+    .doodle.d2 {
+      width: 130px; height: 130px;
+      border-radius: 40px;
+      border: 2px solid #cde7e4;
+      right: 4%; top: 40%;
+      transform: rotate(-10deg);
+      animation: wobble 7s ease-in-out infinite;
+    }
+    .doodle.d3 {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 2px dotted #f2d37a;
+      bottom: 0; right: -50px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    .doodle::before {
+      content: "🍲";
+      position: absolute;
+      font-size: 26px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.7;
+    }
 
-.menu a {
-  margin-left: 18px;
-  font-size: 15px;
-  text-decoration: none;
-  color: #3a332e;
-}
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes wobble {
+      0%,100% { transform: rotate(-10deg); }
+      50% { transform: rotate(5deg); }
+    }
 
-/* HERO */
-.hero {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 32px;
-}
+    /* NAV */
+    nav {
+      background: white;
+      padding: 16px 24px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
 
-.hero-text {
-  flex: 1;
-}
+    .logo {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+    }
 
-.recipe-title {
-  font-family: "Great Vibes", cursive;
-  font-size: 46px;
-  color: var(--primary);
-  margin-bottom: 4px;
-}
+    .menu a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -3px;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg,#f3bccc,#f2d37a);
+      transition: width .25s ease;
+    }
+    .menu a:hover::after {
+      width: 100%;
+    }
 
-.subtitle {
-  font-size: 15px;
-  color: var(--muted);
-}
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 26px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      align-items: center;
+    }
 
-.chips {
-  display: flex;
-  gap: 8px;
-  margin: 10px 0 16px;
-}
+    .hero-text {
+      animation: fadeInLeft 0.7s ease-out;
+    }
 
-.chip {
-  background: var(--accent);
-  padding: 4px 12px;
-  border-radius: 16px;
-  font-size: 12px;
-}
+    .recipe-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-.hero-image-wrap { flex: 1; }
-.hero-image {
-  width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px var(--shadow);
-}
+    .recipe-title {
+      font-family: "Great Vibes", cursive;
+      font-size: 46px;
+      margin-bottom: 2px;
+    }
 
-/* SECTION */
-.card {
-  background: var(--card);
-  padding: 16px 20px;
-  border-radius: 14px;
-  box-shadow: 0 4px 10px var(--shadow);
-}
+    /* HEART */
+    .fav-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #f3c7d3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: #fff7fb;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+    .fav-btn.active {
+      background: #ffe1ec;
+      box-shadow: 0 10px 20px rgba(240,138,166,0.4);
+    }
 
-.section-heading {
-  font-size: 22px;
-  margin-bottom: 12px;
-  color: var(--primary);
-}
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
 
-/* LISTS */
-.pretty li { margin-bottom: 6px; }
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
 
-.steps li { margin-bottom: 10px; }
+    .chip {
+      background: var(--p4);
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid #dcd2ff;
+      color: #6a5fa3;
+    }
 
-/* LAYOUT */
-.main-layout {
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: 22px;
-  margin-top: 20px;
-}
+    /* RATING */
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .stars span {
+      cursor: pointer;
+      font-size: 18px;
+      color: #d7c5c5;
+      transition: transform .15s ease, color .15s ease;
+    }
+    .stars span.active {
+      color: #f7b344;
+      transform: scale(1.1);
+    }
 
-/* VIDEO */
-.video-wrapper iframe {
-  width: 100%;
-  height: 200px;
-  border-radius: 12px;
-}
+    .hero-intro {
+      font-size: 14px;
+    }
 
-/* SHOPPING LIST */
-.shopping-drop {
-  border: 2px dashed var(--primary);
-  padding: 12px;
-  border-radius: 10px;
-  min-height: 120px;
-}
-
-.shopping-item {
-  background: #f7efe9;
-  padding: 6px 10px;
-  border-radius: 8px;
-  margin-bottom: 6px;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* BUTTONS */
-.btn-soft {
-  background: var(--accent);
-  padding: 6px 12px;
-  font-size: 13px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-/* MOOD POPUP */
-.mood-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.25s;
-}
-
-.mood-overlay.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.mood-box {
-  background: white;
-  padding: 22px;
-  border-radius: 16px;
-  max-width: 350px;
-  text-align: center;
-}
-
-.mood-btn {
-  background: var(--accent);
-  padding: 6px 12px;
-  margin: 4px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.rating-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.stars span {
-  cursor: pointer;
-  font-size: 20px;
-  color: #c7c0b9;
-}
-
-.stars span.active {
-  color: var(--primary);
-}
-
-/* NOTES */
-.notes-area {
-  width: 100%;
-  height: 120px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  padding: 10px;
-}
-
-/* DOODLES */
-.doodle {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  opacity: 0.18;
-  background-size: cover;
-}
-
-.d1 {
-  top: -10px;
-  left: -10px;
-  background-image: url("https://i.imgur.com/kaq0T1E.png");
-}
-.d2 {
-  bottom: 20px;
-  right: -20px;
-  background-image: url("https://i.imgur.com/4sVn9Zt.png");
-}
-
-</style>
+    .hero-image {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
 </head>
 <body>
 
@@ -247,266 +234,223 @@ nav {
   <!-- DOODLES -->
   <div class="doodle d1"></div>
   <div class="doodle d2"></div>
-
-  <!-- MOOD POPUP -->
-  <div class="mood-overlay" id="moodOverlay">
-    <div class="mood-box">
-      <h3>Mood hom nay?</h3>
-      <p style="color:var(--muted)">Minh goi y cach an kho quet hop voi cam xuc cua ban.</p>
-      <button class="mood-btn" data-mood="met">Met moi</button>
-      <button class="mood-btn" data-mood="healthy">Healthy</button>
-      <button class="mood-btn" data-mood="voi">Dang voi</button>
-      <button class="mood-btn" data-mood="anui">Can an ui</button>
-      <p id="moodNote" style="margin-top:10px;font-size:12px;color:var(--muted)"></p>
-    </div>
-  </div>
+  <div class="doodle d3"></div>
 
   <!-- NAV -->
   <nav>
-    <div class="logo">Nha Bep Nho</div>
+    <div class="logo">Nhà Bếp Nhỏ</div>
     <div class="menu">
-      <a href="index.html">Trang chu</a>
-      <a href="mon-man.html"><b>Mon man</b></a>
-      <a href="mon-ngot.html">Mon ngot</a>
-      <a href="do-uong.html">Do uong</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html"><b>Món mặn</b></a>
+      <a href="mon-ngot.html">Món ngọt</a>
+      <a href="do-uong.html">Đồ uống</a>
     </div>
   </nav>
 
-  <!-- ACTIONS -->
-  <div style="display:flex;gap:10px;margin-bottom:20px;">
-    <button class="btn-soft" id="moodBtn">💭 Hoi mood</button>
-    <button class="btn-soft" id="randomBtn">🎡 Hom nay an gi?</button>
-    <div id="randomResult" style="font-size:13px;color:var(--muted);align-self:center;"></div>
-  </div>
-
   <!-- HERO -->
-  <section class="hero">
+  <div class="hero">
+
     <div class="hero-text">
-      <div class="recipe-title">Kho quet</div>
-      <div class="subtitle">Dam da – man ngot – an kem rau cu cuc dua.</div>
+      <div class="recipe-title-row">
+        <div class="recipe-title">Kho quẹt</div>
+
+        <!-- YÊU THÍCH -->
+        <div class="fav-btn" id="favBtn">🤍</div>
+      </div>
+
+      <div class="subtitle">Món mặn – 4 phần ăn • 40 phút • Dễ</div>
 
       <div class="chips">
-        <div class="chip">40 phut</div>
-        <div class="chip">De</div>
-        <div class="chip">4 khau phan</div>
+        <div class="chip">Dễ</div>
+        <div class="chip">Nhanh</div>
+        <div class="chip">Đưa cơm</div>
       </div>
 
       <!-- RATING -->
       <div class="rating-row">
-        <span>Danh gia:</span>
-        <div class="stars" id="starContainer">
-          <span data-star="1">★</span>
-          <span data-star="2">★</span>
-          <span data-star="3">★</span>
-          <span data-star="4">★</span>
-          <span data-star="5">★</span>
+        <div class="stars" id="starRating">
+          <span data-rate="1">★</span>
+          <span data-rate="2">★</span>
+          <span data-rate="3">★</span>
+          <span data-rate="4">★</span>
+          <span data-rate="5">★</span>
         </div>
-        <span id="ratingText">(chua co)</span>
+        <div id="ratingText">Chưa có đánh giá</div>
       </div>
 
-      <p style="font-size:14px;margin-top:10px;">
-        Kho quet la mon an dan da, don gian nhung cuc dua com. Hop cho ngay tro gio muon an gi do man man, beo beo.
+      <p class="hero-intro">
+        Kho quẹt là món mặn bình dị nhưng đậm đà, chỉ từ tôm khô – thịt – nước mắm
+        mà tạo thành thứ nước kho thơm, sệt, ngọt mặn hài hòa. Ăn cùng rau luộc hay cơm trắng đều “ngon khó tả”.
       </p>
+
     </div>
 
-    <div class="hero-image-wrap">
-      <img class="hero-image"
-           src="https://images.pexels.com/photos/12118864/pexels-photo-12118864.jpeg"
-           alt="Kho Quet">
+    <img class="hero-image"
+         src="https://images.pexels.com/photos/15804606/pexels-photo-15804606.jpeg"
+         alt="Kho quẹt"/>
+  </div>
+
+  <!-- NGUYÊN LIỆU + KHẨU PHẦN -->
+  <section class="section">
+    <h2 class="sec-title">Nguyên liệu</h2>
+
+    <label for="servings"><b>Khẩu phần:</b></label>
+    <select id="servings">
+      <option value="4">4 phần (gốc)</option>
+      <option value="2">2 phần</option>
+      <option value="6">6 phần</option>
+      <option value="8">8 phần</option>
+    </select>
+
+    <ul id="ingredientList">
+      <li data-base="200">200 g thịt ba chỉ nhiều mỡ</li>
+      <li data-base="40">40 g tôm khô</li>
+      <li data-base="10">10–15 g hành khô (2–3 củ)</li>
+      <li data-base="10">10–15 g tỏi</li>
+      <li data-base="14">1 thìa canh (14 g) đường trắng</li>
+      <li data-base="14">1 thìa canh đường nâu</li>
+      <li data-base="45">3–4 thìa canh nước mắm</li>
+      <li data-base="0">Một ít ớt tươi, tiêu, hành xanh</li>
+      <li data-base="10">Dầu ăn (10–15 ml)</li>
+    </ul>
+  </section>
+
+  <!-- DANH SÁCH MUA SẮM (DRAG AND DROP) -->
+  <section class="section">
+    <h2 class="sec-title">Giỏ mua sắm</h2>
+    <p>Nhấn vào nguyên liệu để thêm vào giỏ. Kéo để sắp xếp.</p>
+
+    <ul id="shoppingList" class="shopping"></ul>
+  </section>
+
+  <!-- CÁCH LÀM -->
+  <section class="section">
+    <h2 class="sec-title">Cách làm</h2>
+
+    <ol class="method">
+      <li>Rửa sạch tôm khô, ngâm nước sôi 20 phút cho mềm.</li>
+      <li>Thái thịt: tách riêng phần mỡ và nạc nếu được; hành tỏi băm nhỏ.</li>
+      <li>Để lửa vừa, rang phần mỡ để tiết mỡ và tạo tóp mỡ vàng. Vớt tóp để riêng.</li>
+      <li>Phi thơm hành tỏi, cho tôm + thịt vào đảo cho săn.</li>
+      <li>Pha nước kho theo tỉ lệ: 1 đường : 1.5–2 nước mắm : 1.5 nước. Đổ vào chảo.</li>
+      <li>Cho tóp mỡ + ớt vào, đun liu riu 5–10 phút đến khi nước sệt.</li>
+      <li>Nêm lại, thêm hành xanh và tiêu.</li>
+    </ol>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="section">
+    <h2 class="sec-title">Video hướng dẫn</h2>
+
+    <div class="video-wrapper">
+      <iframe width="100%" height="315"
+              src="https://www.youtube.com/embed/uk_1KDqF69I"
+              frameborder="0"
+              allowfullscreen></iframe>
     </div>
   </section>
 
-  <!-- MAIN -->
-  <section class="main-layout">
-
-    <!-- LEFT -->
-    <div>
-      <div class="card">
-        <h3 class="section-heading">Nguyen lieu</h3>
-        <ul class="pretty" id="ingredientList">
-          <li class="ingredient-item" draggable="true">200g thit ba chi</li>
-          <li class="ingredient-item" draggable="true">40g tom kho</li>
-          <li class="ingredient-item" draggable="true">10g hanh</li>
-          <li class="ingredient-item" draggable="true">10g toi</li>
-          <li class="ingredient-item" draggable="true">1 tbsp duong trang</li>
-          <li class="ingredient-item" draggable="true">1 tbsp duong nau</li>
-          <li class="ingredient-item" draggable="true">3–4 tbsp nuoc mam</li>
-          <li class="ingredient-item" draggable="true">ot tuoi, hanh xanh</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3 class="section-heading">Cach lam</h3>
-        <ol class="steps">
-          <li>Ngam tom kho voi nuoc soi toi thoi gian mem.</li>
-          <li>Rang mo tu thit ba chi den khi ra mo va vang.</li>
-          <li>Phi hanh toi, xao tom va thit.</li>
-          <li>Pha nuoc mam theo ti le 1 duong : 1.5–2 nuoc mam : 1.5 nuoc.</li>
-          <li>Do vao chao, rim lửa nho den khi set lai.</li>
-          <li>Nêm lai, them ot va hanh xanh.</li>
-        </ol>
-      </div>
-    </div>
-
-    <!-- RIGHT -->
-    <div>
-
-      <div class="card video-wrapper">
-        <h3 class="section-heading">Video</h3>
-        <iframe src="https://www.youtube.com/embed/uk_1KDqF69I" allowfullscreen></iframe>
-      </div>
-
-      <div class="card">
-        <h3 class="section-heading">Gio di cho</h3>
-        <div id="shoppingDrop" class="shopping-drop">
-          <span style="color:var(--muted);font-size:12px;">
-            Keo nguyen lieu sang day.
-          </span>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3 class="section-heading">Ghi chu</h3>
-        <textarea class="notes-area" id="personalNotes"></textarea>
-      </div>
-
-    </div>
+  <!-- GỢI Ý MÓN NGẪU NHIÊN (WHEEL) -->
+  <section class="section">
+    <h2 class="sec-title">Gợi ý hôm nay nên ăn gì?</h2>
+    <button id="spinBtn" class="spin-btn">Quay chọn món</button>
+    <div id="result"></div>
   </section>
 
-  <footer style="text-align:center;margin:40px 0;color:var(--muted);font-size:13px;">
-    © 2025 Nha Bep Nho – Kho Quet
+  <!-- GHI CHÚ CÁ NHÂN -->
+  <section class="section">
+    <h2 class="sec-title">Ghi chú của bạn</h2>
+    <textarea id="notes" placeholder="Ghi lại điều chỉnh khẩu vị, thời gian kho, mẹo riêng..."></textarea>
+    <button id="saveNotes">Lưu ghi chú</button>
+  </section>
+
+  <footer>
+    © 2025 Nhà Bếp Nhỏ – Kho quẹt.
   </footer>
 
 </div>
 
 <!-- SCRIPT -->
 <script>
-const RECIPE_ID = "kho_quet";
-
-/* FAVORITE NOT USED HERE */
+/* YÊU THÍCH */
+const favBtn = document.getElementById("favBtn");
+favBtn.addEventListener("click", () => {
+  favBtn.classList.toggle("active");
+  favBtn.textContent = favBtn.classList.contains("active") ? "❤️" : "🤍";
+});
 
 /* RATING */
-const stars = document.getElementById("starContainer");
+const stars = document.querySelectorAll("#starRating span");
 const ratingText = document.getElementById("ratingText");
 
-function loadRating() {
-  let r = Number(localStorage.getItem("rating_" + RECIPE_ID) || 0);
-  ratingText.textContent = r ? `(${r}/5)` : "(chua co)";
-  [...stars.children].forEach(s => {
-    s.classList.toggle("active", Number(s.dataset.star) <= r);
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    let rate = star.dataset.rate;
+    stars.forEach(s => s.classList.remove("active"));
+    for (let i = 0; i < rate; i++) stars[i].classList.add("active");
+    ratingText.textContent = `Bạn đánh giá: ${rate}/5`;
   });
-}
-stars.addEventListener("click", e => {
-  if (e.target.dataset.star) {
-    localStorage.setItem("rating_" + RECIPE_ID, e.target.dataset.star);
-    loadRating();
-  }
-});
-loadRating();
-
-/* SHOPPING LIST */
-const shoppingDrop = document.getElementById("shoppingDrop");
-let dragged = null;
-
-document.querySelectorAll(".ingredient-item").forEach(i => {
-  i.addEventListener("dragstart", () => { dragged = i.textContent.trim(); });
 });
 
-shoppingDrop.addEventListener("dragover", e => e.preventDefault());
-shoppingDrop.addEventListener("drop", () => {
-  let data = JSON.parse(localStorage.getItem("shopping_" + RECIPE_ID) || "[]");
-  if (!data.includes(dragged)) data.push(dragged);
-  localStorage.setItem("shopping_" + RECIPE_ID, JSON.stringify(data));
-  renderShopping();
-});
+/* KHẨU PHẦN */
+const servings = document.getElementById("servings");
+const ingList = document.getElementById("ingredientList").querySelectorAll("li");
 
-function renderShopping() {
-  let data = JSON.parse(localStorage.getItem("shopping_" + RECIPE_ID) || "[]");
-  shoppingDrop.innerHTML = "";
-  if (!data.length) {
-    shoppingDrop.innerHTML =
-      '<span style="font-size:12px;color:var(--muted);">Keo nguyen lieu sang day.</span>';
-    return;
-  }
-  data.forEach((t, i) => {
-    let div = document.createElement("div");
-    div.className = "shopping-item";
-    div.innerHTML = `<span>${t}</span><button data-i="${i}">✕</button>`;
-    shoppingDrop.appendChild(div);
+servings.addEventListener("change", () => {
+  let factor = servings.value / 4; 
+  ingList.forEach(item => {
+    let base = item.getAttribute("data-base");
+    if (base > 0) {
+      item.textContent = (base * factor).toFixed(0) + " g " + item.textContent.replace(/^\d+.*/, "").trim();
+    }
   });
-}
-
-shoppingDrop.addEventListener("click", e => {
-  if (e.target.tagName === "BUTTON") {
-    let data = JSON.parse(localStorage.getItem("shopping_" + RECIPE_ID) || "[]");
-    data.splice(e.target.dataset.i, 1);
-    localStorage.setItem("shopping_" + RECIPE_ID, JSON.stringify(data));
-    renderShopping();
-  }
 });
 
-renderShopping();
+/* GIỎ MUA SẮM */
+const shoppingList = document.getElementById("shoppingList");
+
+ingList.forEach(item => {
+  item.style.cursor = "pointer";
+  item.addEventListener("click", () => {
+    let li = document.createElement("li");
+    li.textContent = item.textContent;
+    li.draggable = true;
+    li.addEventListener("dragstart", () => li.classList.add("dragging"));
+    li.addEventListener("dragend", () => li.classList.remove("dragging"));
+    shoppingList.appendChild(li);
+  });
+});
+
+shoppingList.addEventListener("dragover", e => {
+  e.preventDefault();
+  const dragging = document.querySelector(".dragging");
+  const after = [...shoppingList.querySelectorAll("li:not(.dragging)")].find(li => {
+    return e.clientY <= li.offsetTop + li.offsetHeight / 2;
+  });
+  after ? shoppingList.insertBefore(dragging, after) : shoppingList.appendChild(dragging);
+});
+
+/* WHEEL */
+const dishes = ["Kho quẹt", "Bún thịt nướng", "Thịt kho tàu", "Sườn xào", "Trứng chiên", "Canh bí đỏ"];
+
+document.getElementById("spinBtn").addEventListener("click", () => {
+  let pick = dishes[Math.floor(Math.random()*dishes.length)];
+  document.getElementById("result").textContent = "➡ Hôm nay nên ăn: " + pick + "!";
+});
 
 /* NOTES */
-const notesArea = document.getElementById("personalNotes");
-notesArea.value = localStorage.getItem("notes_" + RECIPE_ID) || "";
-notesArea.addEventListener("input", () => {
-  localStorage.setItem("notes_" + RECIPE_ID, notesArea.value);
+const notes = document.getElementById("notes");
+const saveNotesBtn = document.getElementById("saveNotes");
+
+notes.value = localStorage.getItem("notes_khoquet") || "";
+
+saveNotesBtn.addEventListener("click", () => {
+  localStorage.setItem("notes_khoquet", notes.value);
+  alert("Đã lưu!");
 });
-
-/* RANDOM */
-const randomBtn = document.getElementById("randomBtn");
-const randomResult = document.getElementById("randomResult");
-
-const recipes = [
-  { name: "Kho quet", url: "kho-quet.html" },
-  { name: "Suon xao chua ngot", url: "suon-xao-chua-ngot.html" },
-  { name: "Thit bo kho", url: "thit-bo-kho.html" }
-];
-
-randomBtn.addEventListener("click", () => {
-  randomResult.textContent = "Dang goi y...";
-  let count = 0;
-  let spin = setInterval(() => {
-    let r = recipes[Math.floor(Math.random()*recipes.length)];
-    randomResult.textContent = "Hay thu: " + r.name;
-    count++;
-    if (count > 8) {
-      clearInterval(spin);
-      let chosen = recipes[Math.floor(Math.random()*recipes.length)];
-      randomResult.innerHTML =
-        `Hom nay thu <strong>${chosen.name}</strong>? <a href="${chosen.url}">(Xem)</a>`;
-    }
-  }, 120);
-});
-
-/* MOOD POPUP */
-const moodBtn = document.getElementById("moodBtn");
-const moodOverlay = document.getElementById("moodOverlay");
-const moodNote = document.getElementById("moodNote");
-
-const moodTexts = {
-  met: "Giam do man, an kem rau luoc se nhe bung hon.",
-  healthy: "Bot duong, bot mo; an voi cai thia nho de khong qua dai.",
-  voi: "Nau nua cong thuc la du cho bua nhe.",
-  anui: "An kem com trang nong – rat dua dua, cuc comfort."
-};
-
-moodBtn.addEventListener("click", () => {
-  moodOverlay.classList.add("show");
-  moodNote.textContent = "";
-});
-moodOverlay.addEventListener("click", e => {
-  if (e.target === moodOverlay) moodOverlay.classList.remove("show");
-});
-document.querySelectorAll(".mood-btn").forEach(b => {
-  b.addEventListener("click", () => {
-    moodNote.textContent = moodTexts[b.dataset.mood];
-    setTimeout(() => moodOverlay.classList.remove("show"), 1200);
-  });
-});
-
 </script>
 
 </body>
 </html>
+
+
