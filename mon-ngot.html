@@ -1,27 +1,115 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Món Ngọt – Nhà Bếp Nhỏ</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Món ngọt – Nhà Bếp Nhỏ</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
+    :root {
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Lora", serif;
-      background: #fff8f5;
-      color: #4a3b36;
+      background: linear-gradient(135deg, #fff9f3, #fdf0ff);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+      position: relative;
+    }
+
+    /* DOODLES / SKETCH-STYLE DECORATIONS */
+    .doodle {
+      position: absolute;
+      opacity: 0.16;
+      filter: blur(0.2px);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .doodle.d1 {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px dashed #f3bccc;
+      top: 40px;
+      left: -30px;
+      animation: float 8s ease-in-out infinite;
+    }
+    .doodle.d2 {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 2px dotted #f2d37a;
+      bottom: 60px;
+      right: -50px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    .doodle.d3 {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      border: 2px solid #cde7e4;
+      top: 45%;
+      right: 12%;
+      transform: rotate(-8deg);
+      animation: wobble 7s ease-in-out infinite;
+    }
+    .doodle::before {
+      content: "✦";
+      position: absolute;
+      font-size: 26px;
+      color: #f3bccc;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    @keyframes wobble {
+      0%, 100% { transform: rotate(-6deg); }
+      50% { transform: rotate(4deg); }
+    }
+
+    /* NAVIGATION */
     nav {
-      background: #ffffff;
+      background: white;
       padding: 16px 24px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid #f3e2da;
+      margin-bottom: 40px;
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
     }
 
     .logo {
@@ -30,217 +118,239 @@
     }
 
     .menu a {
-      margin-left: 18px;
+      margin-left: 20px;
       text-decoration: none;
-      color: #4a3b36;
-      font-size: 14px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
     }
 
-    .container {
-      max-width: 1080px;
-      margin: auto;
-      padding: 24px;
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #f3bccc, #f2d37a);
+      transition: width 0.25s ease;
     }
 
-    h1 {
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .page-title {
       text-align: center;
       font-family: "Great Vibes", cursive;
-      font-size: 46px;
-      margin-bottom: 4px;
+      font-size: 48px;
+      margin-bottom: 10px;
+      animation: fadeInDown 0.8s ease-out;
     }
 
-    p.subtitle {
+    .page-subtitle {
       text-align: center;
-      margin-top: 0;
-      color: #7c6f66;
       font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 26px;
     }
 
-    /* Mood + Wheel */
-    .tools {
-      text-align: center;
-      margin-top: 24px;
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .btn {
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: 1px solid #f0d9d3;
-      background: white;
-      cursor: pointer;
-      font-size: 14px;
-      margin: 6px;
-    }
-
-    #mood-result, #wheel-result {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #7c6f66;
-    }
-
-    /* Grid */
+    /* GRID */
     .recipe-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
-      gap: 24px;
-      margin-top: 32px;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
     }
 
     .recipe-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 16px;
-      border: 1px solid #f3ddd4;
-      transition: 0.25s ease;
+      background: white;
+      border-radius: var(--radius);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
       text-decoration: none;
       color: inherit;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,225,232,0.25), rgba(227,244,244,0.15));
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
     }
 
     .recipe-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      border-color: #f2c6c6;
+      box-shadow: 0 26px 50px rgba(0,0,0,0.08);
+      border-color: #f3bccc;
     }
 
-    .recipe-card img {
+    .recipe-card:hover::before {
+      opacity: 1;
+    }
+
+    .recipe-image {
       width: 100%;
-      border-radius: 14px;
-      height: 180px;
+      height: 220px;
       object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
     }
 
-    .recipe-title {
+    .recipe-name {
       font-family: "Great Vibes", cursive;
-      font-size: 32px;
-      margin: 10px 0 4px;
+      font-size: 30px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
     }
 
-    .recipe-meta {
-      font-size: 13px;
-      color: #7c6f66;
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
       margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .chip {
-      display: inline-block;
-      background: #ffe9f0;
+      background: var(--p4);
       padding: 4px 10px;
+      font-size: 11px;
       border-radius: 999px;
-      font-size: 12px;
-      margin-right: 6px;
-      border: 1px solid #f3d0d8;
+      border: 1px solid #dcd2ff;
+      color: #6a5fa3;
     }
 
-    .recipe-desc {
+    .intro {
       font-size: 14px;
-      margin: 10px 0;
+      margin-bottom: 8px;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+    }
+
+    .mini-note {
+      font-size: 12px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
     }
 
     footer {
       text-align: center;
-      padding: 24px;
-      color: #7c6f66;
+      margin-top: 50px;
       font-size: 13px;
-      margin-top: 40px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 16px; }
+      nav { padding: 12px 16px; }
+      .menu a { margin-left: 12px; font-size: 14px; }
+      .page-title { font-size: 40px; }
     }
   </style>
+
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">Nhà Bếp Nhỏ</div>
-  <div class="menu">
-    <a href="index.html">Trang chủ</a>
-    <a href="mon-man.html">Món mặn</a>
-    <a href="mon-ngot.html"><b>Món ngọt</b></a>
-    <a href="do-uong.html">Đồ uống</a>
-  </div>
-</nav>
-
 <div class="container">
 
-  <h1>Món Ngọt</h1>
-  <p class="subtitle">Những món ngọt nhẹ – thơm – dịu, hợp cho mọi tâm trạng.</p>
+  <!-- DOODLES -->
+  <div class="doodle d1"></div>
+  <div class="doodle d2"></div>
+  <div class="doodle d3"></div>
 
-  <!-- Mood + Wheel -->
-  <div class="tools">
-    <button class="btn" onclick="suggestMood('sad')">🥺 Hơi buồn tí</button>
-    <button class="btn" onclick="suggestMood('tired')">😮‍💨 Mệt rồi</button>
-    <button class="btn" onclick="suggestMood('happy')">😊 Vui nè</button>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nhà Bếp Nhỏ</div>
+    <div class="menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html">Món mặn</a>
+      <a href="mon-ngot.html"><b>Món ngọt</b></a>
+      <a href="do-uong.html">Đồ uống</a>
+    </div>
+  </nav>
 
-    <div id="mood-result"></div>
-
-    <button class="btn" onclick="spinWheel()">🎡 Hôm nay ăn gì?</button>
-    <div id="wheel-result"></div>
+  <div class="page-title">Món ngọt</div>
+  <div class="page-subtitle">
+    Những món ngọt dịu nhẹ – đủ để an ủi một ngày mệt, nhưng không khiến bạn thấy “có lỗi” với bản thân.
   </div>
 
-  <!-- Recipes -->
+  <!-- GRID -->
   <div class="recipe-grid">
 
+    <!-- CARD 1: LINK ĐẾN TRANG CHI TIẾT -->
     <a class="recipe-card" href="banh-pancake-chuoi.html">
-      <img src="https://images.pexels.com/photos/3026809/pexels-photo-3026809.jpeg" />
-      <div class="recipe-title">Bánh pancake chuối</div>
-      <div class="recipe-meta">15 phút · Ngọt nhẹ</div>
-      <div class="chip">Chuối</div>
-      <div class="chip">Yến mạch</div>
-      <p class="recipe-desc">Mềm và thơm nhẹ — hợp cho buổi sáng dịu dàng.</p>
+      <img class="recipe-image"
+           src="https://images.pexels.com/photos/3026809/pexels-photo-3026809.jpeg"
+           alt="Bánh pancake chuối"/>
+
+      <div class="recipe-name">Bánh pancake chuối</div>
+
+      <div class="chips">
+        <div class="chip">15 phút</div>
+        <div class="chip">Dễ</div>
+        <div class="chip">Bữa sáng</div>
+      </div>
+
+      <p class="intro">
+        Bánh mềm, thơm, ngọt tự nhiên từ chuối – cực hợp cho buổi sáng lười biếng nhưng vẫn muốn “ăn tử tế”.
+      </p>
+
+      <div class="mini-note">
+        Click để xem công thức chi tiết, video và tips nhỏ xinh.
+      </div>
     </a>
 
+    <!-- CARD 2: PUDDING XOÀI – SAU NÀY BẠN CÓ THỂ LÀM FILE RIÊNG GIỐNG PANCAKE -->
     <a class="recipe-card" href="#">
-      <img src="https://images.pexels.com/photos/714447/pexels-photo-714447.jpeg" />
-      <div class="recipe-title">Pudding xoài sữa dừa</div>
-      <div class="recipe-meta">20 phút · Mát lạnh</div>
-      <div class="chip">Xoài</div>
-      <div class="chip">Sữa dừa</div>
-      <p class="recipe-desc">Mềm – mướt – thơm xoài.</p>
-    </a>
+      <img class="recipe-image"
+           src="https://images.pexels.com/photos/714447/pexels-photo-714447.jpeg"
+           alt="Pudding xoài sữa dừa"/>
 
-    <a class="recipe-card" href="#">
-      <img src="https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg" />
-      <div class="recipe-title">Cookie socola mềm</div>
-      <div class="recipe-meta">25 phút · Ngọt đậm</div>
-      <div class="chip">Socola</div>
-      <div class="chip">Snack</div>
-      <p class="recipe-desc">Giòn nhẹ ngoài, mềm ẩm trong — rất gây nghiện.</p>
+      <div class="recipe-name">Pudding xoài sữa dừa</div>
+
+      <div class="chips">
+        <div class="chip">20 phút</div>
+        <div class="chip">Lạnh</div>
+      </div>
+
+      <p class="intro">
+        Pudding mềm mịn, mùi xoài và sữa dừa nhẹ nhàng – để trong tủ lạnh là luôn có món tráng miệng “gọi tên”.
+      </p>
+
+      <div class="mini-note">
+        (Sau này bạn có thể tạo file riêng cho món này giống mẫu pancake.)
+      </div>
     </a>
 
   </div>
+
+  <footer>
+    © 2025 Nhà Bếp Nhỏ – Món ngọt.
+  </footer>
 
 </div>
 
-<footer>
-  © 2025 Nhà Bếp Nhỏ – Món ngọt.
-</footer>
-
-
-<script>
-/* ===== Mood suggestion ===== */
-function suggestMood(mood) {
-  let text = "";
-
-  if (mood === "sad")
-    text = "Bạn hơi buồn — hãy thử món gì thật mềm và ngọt nhẹ như pancake nhé.";
-  if (mood === "tired")
-    text = "Bạn mệt rồi — pudding lạnh sẽ giúp bạn tỉnh táo và dễ chịu hơn.";
-  if (mood === "happy")
-    text = "Bạn đang vui — thử cookie socola để tăng năng lượng nè!";
-
-  document.getElementById("mood-result").textContent = text;
-}
-
-/* ===== Random Recipe Wheel ===== */
-function spinWheel() {
-  const recipes = [
-    "Bánh pancake chuối 🍌",
-    "Pudding xoài sữa dừa 🥭",
-    "Cookie socola mềm 🍪"
-  ];
-
-  const pick = recipes[Math.floor(Math.random() * recipes.length)];
-  document.getElementById("wheel-result").textContent = "Món hôm nay là: " + pick;
-}
-</script>
-
 </body>
 </html>
+
