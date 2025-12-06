@@ -1,3 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Món mặn – Nhà Bếp Nhỏ</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Lora", serif;
+      background: linear-gradient(135deg, #fff9f3, #fdf0ff);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+      position: relative;
+    }
+
+    /* DOODLES */
+    .doodle {
+      position: absolute;
+      opacity: 0.16;
+      filter: blur(0.2px);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .doodle.d1 {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px dashed #f3bccc;
+      top: 40px;
+      left: -30px;
+      animation: float 8s ease-in-out infinite;
+    }
+    .doodle.d2 {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 2px dotted #f2d37a;
+      bottom: 60px;
+      right: -50px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    .doodle.d3 {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      border: 2px solid #cde7e4;
+      top: 45%;
+      right: 12%;
+      transform: rotate(-8deg);
+      animation: wobble 7s ease-in-out infinite;
+    }
+    .doodle::before {
+      content: "✦";
+      position: absolute;
+      font-size: 26px;
+      color: #f3bccc;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    @keyframes wobble {
+      0%, 100% { transform: rotate(-6deg); }
+      50% { transform: rotate(4deg); }
+    }
+
+    /* NAV */
+    nav {
+      background: white;
+      padding: 16px 24px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+    }
+
+    .menu a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #f3bccc, #f2d37a);
+      transition: width 0.25s ease;
+    }
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .page-title {
+      text-align: center;
+      font-family: "Great Vibes", cursive;
+      font-size: 48px;
+      margin-bottom: 10px;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* GRID */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+    }
+
+    .recipe-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+    }
+
+    .recipe-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,225,232,0.25), rgba(227,244,244,0.15));
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 26px 50px rgba(0,0,0,0.08);
+      border-color: #f3bccc;
+    }
+
+    .recipe-card:hover::before { opacity: 1; }
+
+    .recipe-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .recipe-name {
+      font-family: "Great Vibes", cursive;
+      font-size: 30px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .chip {
+      background: var(--p4);
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid #dcd2ff;
+      color: #6a5fa3;
+    }
+
+    .intro {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+    }
+
+    .mini-note {
+      font-size: 12px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+
+</head>
+
 <body>
 
 <div class="container">
@@ -5,51 +265,79 @@
   <!-- DOODLES -->
   <div class="doodle d1"></div>
   <div class="doodle d2"></div>
+  <div class="doodle d3"></div>
 
   <!-- NAV -->
   <nav>
-    <div class="logo">Nha Bep Nho</div>
+    <div class="logo">Nhà Bếp Nhỏ</div>
     <div class="menu">
-      <a href="index.html">Trang chu</a>
-      <a href="mon-man.html"><b>Mon man</b></a>
-      <a href="mon-ngot.html">Mon ngot</a>
-      <a href="do-uong.html">Do uong</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html"><b>Món mặn</b></a>
+      <a href="mon-ngot.html">Món ngọt</a>
+      <a href="do-uong.html">Đồ uống</a>
     </div>
   </nav>
 
-  <!-- PAGE TITLE -->
-  <div class="page-title">Mon Man</div>
+  <div class="page-title">Món mặn</div>
+  <div class="page-subtitle">
+    Những món mặn đưa cơm – từ nhẹ nhàng đến đậm đà, hợp mọi mood và mọi bữa.
+  </div>
 
-  <!-- GRID OF DISHES -->
-  <div class="grid">
+  <!-- GRID -->
+  <div class="recipe-grid">
 
     <!-- CARD 1 -->
-    <div class="card">
-      <img src="https://images.pexels.com/photos/14875153/pexels-photo-14875153.jpeg" alt="Suon xao chua ngot">
-      <div class="card-content">
-        <div class="card-title">Suon xao chua ngot</div>
-        <div class="card-desc">Miem, bong, chua ngot hai hoa – rat dua com.</div>
-        <a class="btn" href="suon-xao-chua-ngot.html">Xem cong thuc</a>
+    <a class="recipe-card" href="suon-xao-chua-ngot.html">
+      <img class="recipe-image"
+           src="https://images.pexels.com/photos/14875153/pexels-photo-14875153.jpeg"
+           alt="Sườn xào chua ngọt"/>
+
+      <div class="recipe-name">Sườn xào chua ngọt</div>
+
+      <div class="chips">
+        <div class="chip">50 phút</div>
+        <div class="chip">Trung bình</div>
       </div>
-    </div>
+
+      <p class="intro">
+        Mặn – ngọt – chua nhẹ cân bằng, sườn mềm và rất đưa cơm.
+      </p>
+
+      <div class="mini-note">
+        Click để xem công thức chi tiết & video.
+      </div>
+    </a>
 
     <!-- CARD 2 -->
-    <div class="card">
-      <img src="https://images.pexels.com/photos/12118864/pexels-photo-12118864.jpeg" alt="Kho quet">
-      <div class="card-content">
-        <div class="card-title">Kho quet</div>
-        <div class="card-desc">Man ngot, beo beo – an kem rau cu cuc dua.</div>
-        <a class="btn" href="kho-quet.html">Xem cong thuc</a>
+    <a class="recipe-card" href="kho-quet.html">
+      <img class="recipe-image"
+           src="https://images.pexels.com/photos/12118864/pexels-photo-12118864.jpeg"
+           alt="Kho quẹt"/>
+
+      <div class="recipe-name">Kho quẹt</div>
+
+      <div class="chips">
+        <div class="chip">40 phút</div>
+        <div class="chip">Dễ</div>
       </div>
-    </div>
+
+      <p class="intro">
+        Mặn ngọt đậm đà, ăn cùng rau luộc là “hết nồi cơm”.
+      </p>
+
+      <div class="mini-note">
+        Recipe chuẩn, dễ làm, hợp mọi bữa cơm gia đình.
+      </div>
+    </a>
 
   </div>
 
-  <footer style="text-align:center;margin:40px 0;color:var(--muted);font-size:13px;">
-    © 2025 Nha Bep Nho – Mon Man
+  <footer>
+    © 2025 Nhà Bếp Nhỏ – Món mặn.
   </footer>
 
 </div>
 
 </body>
 </html>
+
