@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nhà Bếp Nhỏ – Công Thức Nấu Ăn</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <!-- GOOGLE FONTS: Parisienne (tiêu đề), Lora (nội dung) -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
     :root {
-      --bg: #f7f3ee;
+      /* Pastel tươi sáng hơn */
+      --bg: #fff7f2;
       --card: #ffffff;
-      --accent: #f2cfd4;
-      --accent-2: #f7e4c8;
-      --accent-3: #d0e9e6;
-      --text-main: #4a3b35;
-      --text-muted: #8c7a6b;
-      --radius-lg: 22px;
-      --shadow: 0 18px 40px rgba(0,0,0,0.06);
+      --p1: #ffe1e8; /* pastel hồng */
+      --p2: #fdf0c4; /* pastel vàng */
+      --p3: #e3f4f4; /* pastel xanh mint */
+      --p4: #e8e1ff; /* pastel tím */
+      --text-main: #4b3b36;
+      --text-muted: #8f8077;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
     }
 
     body {
@@ -26,10 +28,8 @@
       font-family: "Lora", serif;
       background: var(--bg);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.7;
     }
-
-    a { text-decoration: none; color: inherit; }
 
     .container {
       max-width: 1100px;
@@ -37,18 +37,19 @@
       padding: 24px;
     }
 
-    /* Header */
+    /* HEADER */
     header {
       display: flex;
-      align-items: center;
       gap: 20px;
-      background: #fff;
-      padding: 16px 22px;
-      border-radius: 18px;
+      align-items: center;
+      background: white;
+      padding: 18px 26px;
+      border-radius: 20px;
       box-shadow: var(--shadow);
-      border: 1px solid #e8dfd7;
+      border: 1px solid #ecdcd3;
       position: sticky;
       top: 10px;
+      z-index: 10;
       backdrop-filter: blur(8px);
     }
 
@@ -56,309 +57,258 @@
       width: 62px;
       height: 62px;
       border-radius: 50%;
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--accent), var(--accent-3));
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-family: "Great Vibes", cursive;
-      font-size: 28px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--p1), var(--p4));
       color: white;
+      font-family: "Parisienne", cursive;
+      font-size: 28px;
     }
 
-    .title-group .main-title {
-      font-family: "Great Vibes", cursive;
-      font-size: 32px;
-    }
-
-    .title-group .subtitle {
-      font-size: 12px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      letter-spacing: 0.15em;
-      margin-top: 4px;
-    }
-
-    /* Hero */
-    .hero {
-      margin-top: 35px;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 26px;
-      padding: 32px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, var(--accent), var(--accent-2), #fff);
-      box-shadow: var(--shadow);
-    }
-
-    .hero h2 {
-      font-family: "Great Vibes";
+    .title-block .title {
+      font-family: "Parisienne", cursive;
       font-size: 34px;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-    .hero-tag {
+    .title-block .subtitle {
       font-size: 12px;
-      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      margin-bottom: 10px;
+      color: var(--text-muted);
     }
 
-    .pill-list {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-    }
-
-    /* Main Layout */
-    .layout {
-      margin-top: 40px;
-      display: grid;
-      grid-template-columns: 2fr 1.2fr;
-      gap: 30px;
-    }
-
-    /* Recipe Card */
-    .recipe-card {
-      background: var(--card);
-      border-radius: var(--radius-lg);
-      padding: 26px;
-      box-shadow: var(--shadow);
-      border: 1px solid #ebdfd6;
-    }
-
-    .recipe-title {
-      font-family: "Great Vibes";
+    /* SECTION TITLE */
+    .section-title {
+      font-family: "Parisienne", cursive;
       font-size: 32px;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* GRID 3 CÔNG THỨC */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 26px;
+    }
+
+    /* RECIPE CARD */
+    .recipe-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 18px 20px 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+    }
+
+    .recipe-image {
+      width: 100%;
+      height: 220px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      background: #eee;
+      margin-bottom: 16px;
+    }
+
+    .recipe-name {
+      font-family: "Parisienne", cursive;
+      font-size: 26px;
       margin-bottom: 6px;
     }
 
-    .meta {
+    .chips {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
     .chip {
-      background: #fbf6f1;
       padding: 4px 10px;
       border-radius: 999px;
       font-size: 11px;
-      border: 1px solid #e9dcd1;
-      color: var(--text-muted);
+      background: var(--p3);
+      border: 1px solid #d3ebe8;
+      color: #527a75;
     }
 
-    .recipe-img {
-      width: 100%;
-      height: 320px;
-      border-radius: 20px;
-      object-fit: cover;
-      margin-bottom: 20px;
-      background: #f2cfd4;
+    .intro {
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 14px;
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
+    /* LISTS */
     ul.pretty {
-      list-style: none;
-      padding-left: 0;
+      padding-left: 18px;
+      margin-bottom: 14px;
     }
     ul.pretty li {
-      padding: 4px 0 4px 16px;
-      position: relative;
-    }
-    ul.pretty li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #d0999e;
+      margin-bottom: 6px;
     }
 
     ol.steps {
-      counter-reset: step;
-      padding-left: 0;
-      list-style: none;
+      padding-left: 18px;
+      margin-bottom: 14px;
     }
     ol.steps li {
-      counter-increment: step;
-      padding: 8px 12px 8px 34px;
-      margin-bottom: 8px;
-      background: #fbf6f1;
-      border-radius: 14px;
-      position: relative;
-    }
-    ol.steps li::before {
-      content: counter(step);
-      width: 20px;
-      height: 20px;
-      background: var(--accent);
-      color: #4a3b35;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      position: absolute;
-      top: 8px;
-      left: 8px;
+      margin-bottom: 6px;
     }
 
+    /* NOTE */
     .note {
-      background: #f6f0ea;
       font-size: 13px;
-      padding: 12px;
-      margin-top: 12px;
+      background: var(--p3);
+      border: 1px solid #cfe7e4;
+      padding: 10px 12px;
       border-radius: 14px;
-      color: var(--text-muted);
+      color: #5b7f7b;
     }
 
-    /* Right Column */
-    .video-box {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid #ebdfd6;
-      margin-bottom: 28px;
-    }
-
-    .video-box iframe {
-      width: 100%;
-      height: 230px;
-      border-radius: 14px;
-      border: none;
-    }
-
-    /* Footer */
     footer {
-      margin-top: 40px;
+      margin-top: 50px;
       text-align: center;
-      color: var(--text-muted);
       font-size: 13px;
+      color: var(--text-muted);
     }
 
-    /* Responsive */
-    @media(max-width: 820px){
-      .hero { grid-template-columns: 1fr; }
-      .layout { grid-template-columns: 1fr; }
-      .two-col { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 
 <body>
+
 <div class="container">
 
   <!-- HEADER -->
   <header>
     <div class="logo">NB</div>
-    <div class="title-group">
-      <div class="main-title">Nhà Bếp Nhỏ</div>
-      <div class="subtitle">Nơi lưu giữ những công thức ấm áp</div>
+    <div class="title-block">
+      <div class="title">Nhà Bếp Nhỏ</div>
+      <div class="subtitle">Công thức cho những ngày dịu dàng</div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="hero-tag">Cooking journal</div>
-      <h2>Công thức nấu ăn dành cho ngày dịu dàng</h2>
-      <p>Góc nhỏ để bạn viết lại hành trình nấu ăn của riêng mình – những món ngon giản dị, ấm áp, và mang dấu vết của tuổi trẻ.</p>
+  <!-- SAVORY SECTION -->
+  <div class="section-title">Món mặn</div>
 
-      <div class="pill-list">
-        <div class="pill">Healthy</div>
-        <div class="pill">Gia đình</div>
-        <div class="pill">Comfort food</div>
-      </div>
-    </div>
-  </section>
+  <div class="recipe-grid">
 
-  <!-- MAIN LAYOUT -->
-  <section class="layout">
-
-    <!-- LEFT: RECIPE CARD -->
+    <!-- RECIPE 1: MÓN MẶN -->
     <div class="recipe-card">
-      <h1 class="recipe-title">Pancake Chuối Yến Mạch</h1>
+      <img class="recipe-image" src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg" />
+      <div class="recipe-name">Cơm gà sốt bơ tỏi</div>
 
-      <div class="meta">
-        <div class="chip">20 phút</div>
+      <div class="chips">
+        <div class="chip">25 phút</div>
         <div class="chip">2 người</div>
         <div class="chip">Dễ</div>
       </div>
 
-      <!-- IMAGE (bạn thay link ảnh vào src) -->
-      <img class="recipe-img"
-           src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg"
-           alt="Ảnh món ăn">
+      <p class="intro">Món cơm gà thơm ngậy mùi bơ tỏi, dễ làm và phù hợp cho bữa trưa vội.</p>
 
-      <!-- TWO COLUMNS -->
-      <div class="two-col">
-        <!-- Ingredients -->
-        <div>
-          <h3>Nguyên liệu</h3>
-          <ul class="pretty">
-            <li>1 quả chuối chín</li>
-            <li>1 quả trứng</li>
-            <li>40g yến mạch</li>
-            <li>30ml sữa</li>
-            <li>Bơ hoặc dầu ăn</li>
-            <li>Topping tùy chọn</li>
-          </ul>
-        </div>
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>200g ức gà</li>
+        <li>1 muỗng bơ</li>
+        <li>3 tép tỏi băm</li>
+        <li>Cơm nóng</li>
+      </ul>
 
-        <!-- Steps -->
-        <div>
-          <h3>Các bước</h3>
-          <ol class="steps">
-            <li>Nghiền chuối.</li>
-            <li>Thêm trứng, yến mạch, trộn đều.</li>
-            <li>Đun nóng chảo, cho bơ.</li>
-            <li>Đổ bột và rán vàng hai mặt.</li>
-            <li>Thêm topping và thưởng thức.</li>
-          </ol>
-        </div>
-      </div>
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Áp chảo gà cho vàng đều.</li>
+        <li>Thêm bơ + tỏi, đảo thơm.</li>
+        <li>Đổ sốt lên cơm và thưởng thức.</li>
+      </ol>
 
-      <div class="note">
-        Gợi ý: Có thể thêm bột quế để tăng hương thơm.
-      </div>
+      <div class="note">Gợi ý: thêm hành lá hoặc ớt bột cho món ăn bắt mắt hơn.</div>
     </div>
 
-    <!-- RIGHT: VIDEO + OTHERS -->
-    <div>
-      <div class="video-box">
-        <h3 style="margin-top:0;">Video tham khảo</h3>
-        <iframe 
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          allowfullscreen></iframe>
+  </div>
 
-        <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">
-          Bạn có thể đổi VIDEO_ID để nhúng video của bạn.
-        </p>
+
+  <!-- DESSERT SECTION -->
+  <div class="section-title">Món ngọt</div>
+
+  <div class="recipe-grid">
+
+    <!-- RECIPE 2: MÓN NGỌT -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/3026809/pexels-photo-3026809.jpeg"/>
+      <div class="recipe-name">Bánh pancake chuối</div>
+
+      <div class="chips">
+        <div class="chip">15 phút</div>
+        <div class="chip">Dễ</div>
       </div>
+
+      <p class="intro">Bánh mềm, ngọt tự nhiên từ chuối – phù hợp cho bữa sáng nhẹ nhàng.</p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>1 quả chuối chín</li>
+        <li>1 trứng</li>
+        <li>40g yến mạch</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Nghiền chuối.</li>
+        <li>Trộn cùng trứng + yến mạch.</li>
+        <li>Rán lửa nhỏ đến khi vàng.</li>
+      </ol>
+
+      <div class="note">Thêm mật ong hoặc trái cây để tăng vị ngon.</div>
     </div>
 
-  </section>
+  </div>
+
+
+  <!-- DRINKS SECTION -->
+  <div class="section-title">Đồ uống</div>
+
+  <div class="recipe-grid">
+
+    <!-- RECIPE 3: ĐỒ UỐNG -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/594661/pexels-photo-594661.jpeg"/>
+      <div class="recipe-name">Trà đào cam sả</div>
+
+      <div class="chips">
+        <div class="chip">10 phút</div>
+        <div class="chip">Giải nhiệt</div>
+      </div>
+
+      <p class="intro">Thức uống thanh mát kết hợp mùi thơm của sả và vị ngọt dịu của đào.</p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>Trà đen</li>
+        <li>Đào ngâm</li>
+        <li>Sả đập dập</li>
+        <li>Cam tươi</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Nấu trà cùng sả.</li>
+        <li>Cho đá, cam và đào vào ly.</li>
+        <li>Đổ trà lên và khuấy đều.</li>
+      </ol>
+
+      <div class="note">Thêm mật ong nếu muốn vị ngọt tự nhiên hơn.</div>
+    </div>
+
+  </div>
 
   <footer>
-    Template by bạn – thoải mái điều chỉnh theo style riêng của bạn.
+    Thiết kế bởi bạn – hãy thêm công thức theo phong cách của riêng bạn!
   </footer>
 
 </div>
+
 </body>
 </html>
+
