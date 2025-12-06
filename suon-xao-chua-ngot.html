@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sườn xào chua ngọt – Nhà Bếp Nhỏ</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+      --accent: #f3bccc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Lora", serif;
+      background: linear-gradient(135deg, #fff9f3, #fbe9ff);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+      position: relative;
+    }
+
+    /* DOODLES */
+    .doodle {
+      position: absolute;
+      opacity: 0.16;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .doodle.d1 {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      border: 2px dashed #f3bccc;
+      top: 10px; left: -40px;
+      animation: float 9s ease-in-out infinite;
+    }
+    .doodle.d2 {
+      width: 130px; height: 130px;
+      border-radius: 40px;
+      border: 2px solid #cde7e4;
+      right: 4%; top: 40%;
+      transform: rotate(-10deg);
+      animation: wobble 7s ease-in-out infinite;
+    }
+    .doodle.d3 {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 2px dotted #f2d37a;
+      bottom: 0; right: -50px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    .doodle::before {
+      content: "🍖";
+      position: absolute;
+      font-size: 26px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes wobble {
+      0%,100% { transform: rotate(-10deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    /* NAV */
+    nav {
+      background: white;
+      padding: 16px 24px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+    }
+
+    .menu a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -3px;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg,#f3bccc,#f2d37a);
+      transition: width .25s ease;
+    }
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 26px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      align-items: center;
+    }
+
+    .hero-text {
+      animation: fadeInLeft 0.7s ease-out;
+    }
+
+    .recipe-title {
+      font-family: "Great Vibes", cursive;
+      font-size: 46px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .chip {
+      background: var(--p4);
+      padding: 5px 12px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid #dcd2ff;
+      color: #6a5fa3;
+    }
+
+    /* FAVORITE */
+    .fav-btn {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid #f3c7d3;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      background: #fff7fb;
+      transition: .2s;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+    .fav-btn.active { background:#ffe1ec; }
+    .fav-btn span { font-size: 18px; color:#f08aa6; }
+
+    /* Rating */
+    .rating-row { display:flex; gap:8px; align-items:center; margin-bottom:8px; font-size:13px; }
+    .stars span {
+      cursor:pointer; font-size:18px; color:#d7c5c5;
+      transition:.15s;
+    }
+    .stars span.active { color:#f7b344; transform:scale(1.1); }
+
+    .hero-image-wrap { animation: fadeInRight 0.7s ease-out; }
+    .hero-image {
+      width: 100%; height: 260px; object-fit: cover;
+      border-radius: 26px; box-shadow: var(--shadow);
+    }
+
+    @keyframes fadeInLeft { from{opacity:0;transform:translateX(-10px);} to{opacity:1;transform:translateX(0);} }
+    @keyframes fadeInRight{ from{opacity:0;transform:translateX(10px);} to{opacity:1;transform:translateX(0);} }
+
+    /* LAYOUT */
+    .main-layout {
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+      gap: 26px;
+    }
+
+    .card {
+      background:white;
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      border:1px solid #ecdcd3;
+      margin-bottom:20px;
+    }
+
+    h3.section-heading { font-size:18px; margin-bottom:8px; }
+
+    /* Ingredient list */
+    ul.pretty, ol.steps {
+      padding-left:18px; margin-bottom:10px; font-size:14px;
+    }
+    ul.pretty li, ol.steps li { margin-bottom:6px; }
+
+    /* Shopping list */
+    .shopping-card { background:#fffef8; border-radius:var(--radius); border:1px dashed #f0e0aa; }
+    .shopping-drop {
+      min-height:60px; padding:8px; border-radius:14px;
+      background:#fffdf2; border:1px dashed #e7cf8b;
+      font-size:13px;
+    }
+
+    .ingredient-item { cursor:grab; }
+    .ingredient-item.dragging { opacity:0.5; }
+
+    .shopping-item {
+      display:flex; justify-content:space-between;
+      font-size:13px; margin-bottom:4px;
+    }
+
+    /* Video */
+    .video-wrapper iframe {
+      width:100%; height:220px; border-radius:18px; border:none;
+    }
+
+    /* Tips */
+    .tip-note {
+      position:relative;
+      background:#fff8d9; border-radius:16px;
+      padding:14px; box-shadow:0 12px 22px rgba(0,0,0,0.07);
+      border:1px solid #f0e0aa;
+      transform:rotate(-1.5deg);
+      margin-top:16px;
+      font-size:13px;
+    }
+
+    /* Notes */
+    .notes-area { width:100%; min-height:80px; border:1px solid #ecdcd3; font-size:13px; padding:10px; border-radius:14px; background:#fffdfb; }
+
+    /* Random + Mood Buttons */
+    .top-actions { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; font-size:12px; }
+    .btn-soft {
+      border-radius:999px; border:1px solid #ecdcd3;
+      padding:6px 10px; background:white; cursor:pointer;
+      display:inline-flex; align-items:center; gap:6px; font-size:12px;
+    }
+
+    /* Mood Popup */
+    .mood-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.35);
+      display:flex; align-items:center; justify-content:center;
+      z-index:999; opacity:0; pointer-events:none;
+      transition:.25s;
+    }
+    .mood-overlay.show { opacity:1; pointer-events:auto; }
+    .mood-box {
+      background:#fffdf8; border-radius:20px; padding:20px;
+      width:90%; max-width:320px; text-align:center;
+      border:1px solid #f0e2d7;
+      animation:fadeIn .25s ease-out;
+    }
+    .mood-title { font-family:"Great Vibes"; font-size:30px; margin-bottom:4px; }
+    .mood-sub { font-size:12px; color:var(--muted); }
+    .mood-buttons { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
+    .mood-btn { padding:5px 10px; border-radius:999px; border:1px solid #ecdcd3; cursor:pointer; background:white; font-size:12px; }
+
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- DOODLES -->
+  <div class="doodle d1"></div>
+  <div class="doodle d2"></div>
+  <div class="doodle d3"></div>
+
+  <!-- MOOD POPUP -->
+  <div class="mood-overlay" id="moodOverlay">
+    <div class="mood-box">
+      <div class="mood-title">Hôm nay bạn thấy sao?</div>
+      <div class="mood-sub">Mình gợi ý cách ăn món này tùy theo mood nhé.</div>
+      <div class="mood-buttons">
+        <button class="mood-btn" data-mood="met">Mệt mỏi</button>
+        <button class="mood-btn" data-mood="healthy">Muốn healthy</button>
+        <button class="mood-btn" data-mood="voi">Đang vội</button>
+        <button class="mood-btn" data-mood="anui">Cần an ủi</button>
+      </div>
+      <div class="mood-note" id="moodNote" style="margin-top:10px;color:var(--muted);font-size:12px;"></div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nhà Bếp Nhỏ</div>
+    <div class="menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html"><b>Món mặn</b></a>
+      <a href="mon-ngot.html">Món ngọt</a>
+      <a href="do-uong.html">Đồ uống</a>
+    </div>
+  </nav>
+
+  <!-- TOP ACTIONS -->
+  <div class="top-actions">
+    <button class="btn-soft" id="moodBtn"><span>💭</span>Hỏi mood hôm nay</button>
+    <button class="btn-soft" id="randomBtn"><span>🎡</span>Hôm nay ăn gì?</button>
+    <div class="random-result" id="randomResult"></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="recipe-title">Sườn xào chua ngọt</div>
+
+      <div class="subtitle">Món ăn quen thuộc nhưng luôn gây thương nhớ – mềm, bóng, chua ngọt hài hòa.</div>
+
+      <div class="chips">
+        <div class="chip">50 phút</div>
+        <div class="chip">Trung bình</div>
+        <div class="chip">2–3 khẩu phần</div>
+        <div class="chip">Đậm đà</div>
+      </div>
+
+      <!-- RATING -->
+      <div class="rating-row">
+        <span>Đánh giá của bạn:</span>
+        <div class="stars" id="starContainer">
+          <span data-star="1">★</span>
+          <span data-star="2">★</span>
+          <span data-star="3">★</span>
+          <span data-star="4">★</span>
+          <span data-star="5">★</span>
+        </div>
+        <span id="ratingText">(chưa có)</span>
+      </div>
+
+      <!-- FAVORITE -->
+      <div style="display:flex;align-items:center;gap:8px;margin:4px 0;">
+        <div class="fav-btn" id="favBtn"><span id="favIcon">♡</span></div>
+        <span class="fav-label" id="favLabel" style="font-size:12px;color:var(--muted);">Thêm vào yêu thích</span>
+      </div>
+
+      <p style="font-size:14px;">
+        Sườn mềm, áo trong lớp sốt chua ngọt sóng sánh – vừa đưa cơm lại vừa dễ ghiền.
+        Món này hợp những hôm muốn đổi gió với hương vị vừa quen vừa mới.
+      </p>
+    </div>
+
+    <div class="hero-image-wrap">
+      <img class="hero-image"
+           src="https://images.pexels.com/photos/14875153/pexels-photo-14875153.jpeg"
+           alt="Sườn xào chua ngọt">
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="main-layout">
+
+    <!-- LEFT -->
+    <div>
+      <div class="card">
+        <h3 class="section-heading">Nguyên liệu</h3>
+        <ul class="pretty" id="ingredientList">
+          <li class="ingredient-item" draggable="true">450 g sườn</li>
+          <li class="ingredient-item" draggable="true">1/2 thìa cafe muối</li>
+
+          <li><strong>Phần gia vị ướp sườn:</strong></li>
+          <li class="ingredient-item" draggable="true">1/8 thìa cafe bột tỏi / 1/2 thìa tỏi băm</li>
+          <li class="ingredient-item" draggable="true">1/8 thìa cafe bột hành / 1/2 thìa hành băm</li>
+          <li class="ingredient-item" draggable="true">1/2 thìa canh dấm táo</li>
+          <li class="ingredient-item" draggable="true">1/2 thìa canh dầu hào</li>
+          <li class="ingredient-item" draggable="true">1/2 thìa canh xì dầu</li>
+
+          <li><strong>Phần sốt chua ngọt:</strong></li>
+          <li class="ingredient-item" draggable="true">15 g hành khô</li>
+          <li class="ingredient-item" draggable="true">7 g tỏi</li>
+          <li class="ingredient-item" draggable="true">1 thìa canh đường</li>
+          <li class="ingredient-item" draggable="true">2/3 thìa canh dấm</li>
+          <li class="ingredient-item" draggable="true">1/2 thìa canh dầu hào</li>
+          <li class="ingredient-item" draggable="true">120 ml nước nóng</li>
+          <li class="ingredient-item" draggable="true">60 ml dầu ăn</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="section-heading">Cách làm</h3>
+        <ol class="steps">
+          <li>Bóc bỏ lớp màng mỏng phía sau dải sườn, chặt miếng vừa ăn.</li>
+          <li>Luộc sơ sườn với muối cho sạch, rửa lại và để ráo.</li>
+          <li>Ướp sườn với toàn bộ gia vị ướp trong 20–30 phút.</li>
+          <li>Băm nhỏ hành tỏi làm sốt.</li>
+          <li>Phi hành tỏi vàng giòn, vớt riêng.</li>
+          <li>Chiên sườn trên lửa to đến khi rám vàng.</li>
+          <li>Chắt bớt dầu, chỉ để lại 1 thìa canh.</li>
+          <li>Pha nước sốt: đường + dấm + dầu hào + nước nóng + phần nước ướp còn lại.</li>
+          <li>Đổ sốt vào chảo, đun liu riu 15–20 phút cho sườn mềm.</li>
+          <li>Mở vung, đun lửa to cho sốt sệt lại.</li>
+          <li>Trộn hành tỏi phi vào trước khi tắt bếp.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <!-- VIDEO -->
+      <div class="card video-wrapper">
+        <span class="pill-label">Video hướng dẫn</span>
+        <iframe src="https://www.youtube.com/embed/dj535hl32-Y" allowfullscreen></iframe>
+      </div>
+
+      <!-- SHOPPING LIST -->
+      <div class="card shopping-card">
+        <h3 class="section-heading">Giỏ đi chợ</h3>
+        <div id="shoppingDrop" class="shopping-drop">
+          <span style="font-size:12px;color:var(--muted);">
+            Kéo nguyên liệu từ danh sách bên trái sang đây.
+          </span>
+        </div>
+      </div>
+
+      <!-- TIPS -->
+      <div class="tip-note">
+        <p><strong>Mẹo nhỏ:</strong></p>
+        <p>Sườn sẽ ngon nhất khi có độ mềm vừa phải, sốt áo đều và hơi sệt.
+          Đừng chiên quá lâu kẻo khô, và nhớ đảo đều khi om với sốt.</p>
+      </div>
+
+      <!-- NOTES -->
+      <div class="card" style="margin-top:18px;">
+        <h3 class="section-heading">Ghi chú của bạn</h3>
+        <textarea id="personalNotes" class="notes-area" placeholder="Bạn muốn lưu ý gì cho lần sau?"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOMMEND -->
+  <section class="card">
+    <h3 class="section-heading">Bạn có thể thích</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+      <a class="rec-card" href="kho-quet.html" style="text-decoration:none;color:inherit;border:1px dashed #ecdcd3;padding:12px;border-radius:16px;">
+        <div class="rec-tag">Món mặn</div>
+        <div class="rec-title"><strong>Kho quẹt</strong></div>
+        <div>Mặn ngọt hài hòa – chấm rau củ siêu hợp.</div>
+      </a>
+      <a class="rec-card" href="thit-bo-kho.html" style="text-decoration:none;color:inherit;border:1px dashed #ecdcd3;padding:12px;border-radius:16px;">
+        <div class="rec-tag">Món mặn</div>
+        <div class="rec-title"><strong>Thịt bò khô</strong></div>
+        <div>Đậm đà cay nhẹ – ăn vặt hoặc làm topping.</div>
+      </a>
+    </div>
+  </section>
+
+  <footer style="text-align:center;margin-top:40px;font-size:13px;color:var(--muted);">
+    © 2025 Nhà Bếp Nhỏ – Sườn xào chua ngọt.
+  </footer>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+/* CONFIG */
+const RECIPE_ID = "suon_xao_chua_ngot";
+
+/* FAVORITE */
+const favBtn = document.getElementById("favBtn");
+const favIcon = document.getElementById("favIcon");
+const favLabel = document.getElementById("favLabel");
+
+function loadFavorite() {
+  const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+  if (favs.includes(RECIPE_ID)) {
+    favBtn.classList.add("active");
+    favIcon.textContent = "♥";
+    favLabel.textContent = "Đã thêm vào yêu thích";
+  }
+}
+
+function toggleFavorite() {
+  let favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+  if (favs.includes(RECIPE_ID)) {
+    favs = favs.filter(id => id !== RECIPE_ID);
+    favBtn.classList.remove("active");
+    favIcon.textContent = "♡";
+    favLabel.textContent = "Thêm vào yêu thích";
+  } else {
+    favs.push(RECIPE_ID);
+    favBtn.classList.add("active");
+    favIcon.textContent = "♥";
+    favLabel.textContent = "Đã thêm vào yêu thích";
+  }
+  localStorage.setItem("favorites", JSON.stringify(favs));
+}
+
+favBtn.addEventListener("click", toggleFavorite);
+loadFavorite();
+
+/* RATING */
+const starContainer = document.getElementById("starContainer");
+const ratingText = document.getElementById("ratingText");
+
+function loadRating() {
+  const rating = Number(localStorage.getItem("rating_" + RECIPE_ID) || 0);
+  ratingText.textContent = rating ? `(${rating}/5)` : "(chưa có)";
+  [...starContainer.children].forEach(span => {
+    const val = Number(span.dataset.star);
+    span.classList.toggle("active", val <= rating);
+  });
+}
+
+starContainer.addEventListener("click", e => {
+  if (e.target.dataset.star) {
+    const val = Number(e.target.dataset.star);
+    localStorage.setItem("rating_" + RECIPE_ID, val);
+    loadRating();
+  }
+});
+
+loadRating();
+
+/* SHOPPING LIST */
+const shoppingDrop = document.getElementById("shoppingDrop");
+let draggedItem = null;
+
+function renderShoppingList() {
+  let data = JSON.parse(localStorage.getItem("shopping_" + RECIPE_ID) || "[]");
+  shoppingDrop.innerHTML = "";
+  if (!data.length) {
+    shoppingDrop.innerHTML =
+      '<span style="font-size:12px;color:var(--muted);">Kéo nguyên liệu từ danh sách bên trái sang đây.</span>';
+    return;
+  }
+  data.forEach((t, i) => {
+    const div = document.createElement("div");
+    div.className = "shopping-item";
+    div.innerHTML = `<span>${t}</span><button data-idx="${i}" style="border:none;background:transparent;cursor:pointer;">✕</button>`;
+    shoppingDrop.appendChild(div);
+  });
+}
+
+document.querySelectorAll(".ingredient-item").forEach(li => {
+  li.addEventListener("dragstart", () => {
+    draggedItem = li.textContent.trim();
+    li.classList.add("dragging");
+  });
+  li.addEventListener("dragend", () => {
+    draggedItem = null;
+    li.classList.remove("dragging");
+  });
+});
+
+shoppingDrop.addEventListener("dragover", e => e.preventDefault());
+
+shoppingDrop.addEventListener("drop", () => {
+  if (draggedItem) {
+    let data = JSON.parse(localStorage.getItem("shopping_" + RECIPE_ID) || "[]");
+    if (!data.includes(draggedItem)) {
+      data.push(draggedItem);
+      localStorage.setItem("shopping_" + RECIPE_ID, JSON.stringify(data));
+      renderShoppingList();
+    }
+  }
+});
+
+shoppingDrop.addEventListener("click", e => {
+  if (e.target.tagName === "BUTTON") {
+    let data = JSON.parse(localStorage.getItem("shopping_" + RECIPE_ID) || "[]");
+    data.splice(Number(e.target.dataset.idx), 1);
+    localStorage.setItem("shopping_" + RECIPE_ID, JSON.stringify(data));
+    renderShoppingList();
+  }
+});
+
+renderShoppingList();
+
+/* PERSONAL NOTES */
+const notesArea = document.getElementById("personalNotes");
+notesArea.value = localStorage.getItem("notes_" + RECIPE_ID) || "";
+notesArea.addEventListener("input", () => {
+  localStorage.setItem("notes_" + RECIPE_ID, notesArea.value);
+});
+
+/* RANDOM WHEEL */
+const randomBtn = document.getElementById("randomBtn");
+const randomResult = document.getElementById("randomResult");
+
+const recipes = [
+  { name: "Sườn xào chua ngọt", url: "suon-xao-chua-ngot.html" },
+  { name: "Kho quẹt", url: "kho-quet.html" },
+  { name: "Thịt bò khô", url: "thit-bo-kho.html" }
+];
+
+randomBtn.addEventListener("click", () => {
+  randomResult.textContent = "Đang gợi ý...";
+  let count = 0;
+  const spin = setInterval(() => {
+    const r = recipes[Math.floor(Math.random()*recipes.length)];
+    randomResult.textContent = "Hay thử: " + r.name;
+    count++;
+    if (count > 10) {
+      clearInterval(spin);
+      const chosen = recipes[Math.floor(Math.random()*recipes.length)];
+      randomResult.innerHTML =
+        `Hôm nay thử <strong>${chosen.name}</strong>? 
+         <a href="${chosen.url}" style="font-size:12px;">(Xem công thức)</a>`;
+    }
+  }, 120);
+});
+
+/* MOOD POPUP */
+const moodBtn = document.getElementById("moodBtn");
+const moodOverlay = document.getElementById("moodOverlay");
+const moodNote = document.getElementById("moodNote");
+
+const moodTexts = {
+  met: "Giảm bớt lượng đường trong sốt – ăn dịu nhẹ sẽ đỡ mệt hơn.",
+  healthy: "Giảm dầu chiên, tăng thêm rau ăn kèm để bữa ăn cân bằng.",
+  voi: "Làm nửa khẩu phần – sốt chua ngọt vẫn ngon mà nhanh hơn.",
+  anui: "Ăn kèm cơm nóng, thêm hành phi – món này chữa lành rất tốt."
+};
+
+moodBtn.addEventListener("click", () => {
+  moodOverlay.classList.add("show");
+  moodNote.textContent = "";
+});
+
+moodOverlay.addEventListener("click", e => {
+  if (e.target === moodOverlay) moodOverlay.classList.remove("show");
+});
+
+document.querySelectorAll(".mood-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    moodNote.textContent = moodTexts[btn.dataset.mood];
+    setTimeout(() => moodOverlay.classList.remove("show"), 1200);
+  });
+});
+
+// Auto show once
+if (!localStorage.getItem("seen_mood_popup_suon")) {
+  setTimeout(() => {
+    moodOverlay.classList.add("show");
+    localStorage.setItem("seen_mood_popup_suon","1");
+  }, 800);
+}
+</script>
+
+</body>
+</html>
