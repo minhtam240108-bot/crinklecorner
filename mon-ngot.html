@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Món ngọt – Nhà Bếp Nhỏ</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Lora", serif;
+      background: #fff9f3;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: white;
+      padding: 16px 24px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+    }
+
+    .menu a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .page-title {
+      text-align: center;
+      font-family: "Great Vibes", cursive;
+      font-size: 48px;
+      margin-bottom: 30px;
+    }
+
+    /* GRID */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+    }
+
+    .recipe-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+    }
+
+    .recipe-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+    }
+
+    .recipe-name {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .chip {
+      background: var(--p4);
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid #dcd2ff;
+      color: #6a5fa3;
+    }
+
+    .intro {
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      border: none;
+      margin-bottom: 14px;
+    }
+
+    /* LISTS */
+    ul.pretty {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+    ul.pretty li {
+      margin-bottom: 6px;
+    }
+
+    ol.steps {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+    ol.steps li {
+      margin-bottom: 6px;
+    }
+
+    .note {
+      background: var(--p3);
+      border: 1px solid #cfe7e4;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      color: #5b7f7b;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nhà Bếp Nhỏ</div>
+    <div class="menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html">Món mặn</a>
+      <a href="mon-ngot.html"><b>Món ngọt</b></a>
+      <a href="do-uong.html">Đồ uống</a>
+    </div>
+  </nav>
+
+  <div class="page-title">Món ngọt</div>
+
+  <!-- GRID -->
+  <div class="recipe-grid">
+
+    <!-- RECIPE 1 -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/3026809/pexels-photo-3026809.jpeg"/>
+
+      <div class="recipe-name">Bánh pancake chuối</div>
+
+      <div class="chips">
+        <div class="chip">15 phút</div>
+        <div class="chip">Dễ</div>
+      </div>
+
+      <iframe src="https://www.youtube.com/embed/V-_O7nl0Ii0" allowfullscreen></iframe>
+
+      <p class="intro">
+        Mềm, thơm, ngọt tự nhiên – bữa sáng hoàn hảo cho một ngày nhẹ nhàng.
+      </p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>1 quả chuối</li>
+        <li>1 trứng</li>
+        <li>40g yến mạch</li>
+        <li>Mật ong</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Nghiền chuối.</li>
+        <li>Thêm trứng + yến mạch, trộn đều.</li>
+        <li>Rán lửa nhỏ đến khi vàng.</li>
+      </ol>
+
+      <div class="note">Thêm trái cây tươi để món ăn đẹp mắt hơn.</div>
+    </div>
+
+
+    <!-- RECIPE 2 -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/714447/pexels-photo-714447.jpeg"/>
+
+      <div class="recipe-name">Pudding xoài sữa dừa</div>
+
+      <div class="chips">
+        <div class="chip">20 phút</div>
+        <div class="chip">Lạnh</div>
+      </div>
+
+      <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
+
+      <p class="intro">
+        Pudding mềm mịn, ngọt thanh mùi xoài – phù hợp cho mọi độ tuổi.
+      </p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>1 quả xoài chín</li>
+        <li>200ml sữa dừa</li>
+        <li>10g gelatin</li>
+        <li>2 muỗng sữa đặc</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Ngâm gelatin 5 phút.</li>
+        <li>Xay xoài + sữa dừa + sữa đặc.</li>
+        <li>Đun hỗn hợp nhẹ → thêm gelatin.</li>
+        <li>Đổ khuôn, để lạnh 2 tiếng.</li>
+      </ol>
+
+      <div class="note">Trang trí bằng lá bạc hà để món thêm tươi mát.</div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Nhà Bếp Nhỏ – Món ngọt.
+  </footer>
+
+</div>
+
+</body>
+</html>

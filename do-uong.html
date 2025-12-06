@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đồ uống – Nhà Bếp Nhỏ</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Lora", serif;
+      background: #fff9f3;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: white;
+      padding: 16px 24px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+    }
+
+    .menu a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .page-title {
+      text-align: center;
+      font-family: "Great Vibes", cursive;
+      font-size: 48px;
+      margin-bottom: 30px;
+    }
+
+    /* GRID */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+    }
+
+    .recipe-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+    }
+
+    .recipe-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+    }
+
+    .recipe-name {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .chip {
+      background: var(--p1);
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid #ffd0dd;
+      color: #b05d73;
+    }
+
+    .intro {
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      border: none;
+      margin-bottom: 14px;
+    }
+
+    /* LISTS */
+    ul.pretty {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+    ul.pretty li {
+      margin-bottom: 6px;
+    }
+
+    ol.steps {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+    ol.steps li {
+      margin-bottom: 6px;
+    }
+
+    .note {
+      background: var(--p3);
+      border: 1px solid #cfe7e4;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      color: #5b7f7b;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nhà Bếp Nhỏ</div>
+    <div class="menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html">Món mặn</a>
+      <a href="mon-ngot.html">Món ngọt</a>
+      <a href="do-uong.html"><b>Đồ uống</b></a>
+    </div>
+  </nav>
+
+  <div class="page-title">Đồ uống</div>
+
+  <!-- GRID -->
+  <div class="recipe-grid">
+
+    <!-- DRINK 1 -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/594661/pexels-photo-594661.jpeg"/>
+
+      <div class="recipe-name">Trà đào cam sả</div>
+
+      <div class="chips">
+        <div class="chip">10 phút</div>
+        <div class="chip">Giải nhiệt</div>
+      </div>
+
+      <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" allowfullscreen></iframe>
+
+      <p class="intro">
+        Thức uống thanh mát, thơm nhẹ mùi sả – phù hợp mọi thời tiết.
+      </p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>Trà đen</li>
+        <li>Đào ngâm</li>
+        <li>Sả đập dập</li>
+        <li>Cam tươi</li>
+        <li>Mật ong</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Nấu trà với sả.</li>
+        <li>Cho đá, đào và cam vào ly.</li>
+        <li>Đổ trà lên → thêm mật ong.</li>
+      </ol>
+
+      <div class="note">
+        Có thể thêm lá bạc hà để món tươi mát hơn.
+      </div>
+    </div>
+
+
+    <!-- DRINK 2 -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/3184192/pexels-photo-3184192.jpeg"/>
+
+      <div class="recipe-name">Sữa tươi trân châu đường đen</div>
+
+      <div class="chips">
+        <div class="chip">15 phút</div>
+        <div class="chip">Ngọt đậm</div>
+      </div>
+
+      <iframe src="https://www.youtube.com/embed/2vjPBrBU-TM" allowfullscreen></iframe>
+
+      <p class="intro">
+        Công thức đơn giản nhưng hương vị chuẩn vị trà sữa ngoài tiệm.
+      </p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>Sữa tươi</li>
+        <li>Trân châu đen</li>
+        <li>Đường nâu</li>
+        <li>Đá viên</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Nấu tan đường nâu tạo sốt.</li>
+        <li>Thêm trân châu, đảo đều.</li>
+        <li>Rót sữa tươi → thêm đá.</li>
+      </ol>
+
+      <div class="note">
+        Thêm ít bột cacao để vị thơm hơn.
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Nhà Bếp Nhỏ – Đồ uống.
+  </footer>
+
+</div>
+
+</body>
+</html>

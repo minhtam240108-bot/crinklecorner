@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Món mặn – Nhà Bếp Nhỏ</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --p1: #ffe1e8;
+      --p2: #fdf0c4;
+      --p3: #e3f4f4;
+      --p4: #e8e1ff;
+      --text: #4a3b36;
+      --muted: #8b7d75;
+      --shadow: 0 20px 40px rgba(0,0,0,0.06);
+      --radius: 22px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Lora", serif;
+      background: #fff9f3;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    /* NAV */
+    nav {
+      background: white;
+      padding: 16px 24px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+    }
+
+    .menu a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .page-title {
+      text-align: center;
+      font-family: "Great Vibes", cursive;
+      font-size: 48px;
+      margin-bottom: 30px;
+    }
+
+    /* RECIPE GRID */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+    }
+
+    .recipe-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #ecdcd3;
+    }
+
+    .recipe-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+    }
+
+    .recipe-name {
+      font-family: "Great Vibes", cursive;
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .chip {
+      background: var(--p3);
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid #d3ebe8;
+      color: #527a75;
+    }
+
+    .intro {
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    /* VIDEO */
+    iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      border: none;
+      margin-bottom: 14px;
+    }
+
+    /* LISTS */
+    ul.pretty {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+    ul.pretty li {
+      margin-bottom: 6px;
+    }
+
+    ol.steps {
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+    ol.steps li {
+      margin-bottom: 6px;
+    }
+
+    .note {
+      background: var(--p3);
+      border: 1px solid #cfe7e4;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      color: #5b7f7b;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Nhà Bếp Nhỏ</div>
+    <div class="menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="mon-man.html"><b>Món mặn</b></a>
+      <a href="mon-ngot.html">Món ngọt</a>
+      <a href="do-uong.html">Đồ uống</a>
+    </div>
+  </nav>
+
+  <div class="page-title">Món mặn</div>
+
+  <!-- GRID -->
+  <div class="recipe-grid">
+
+    <!-- RECIPE 1 -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg"/>
+
+      <div class="recipe-name">Cơm gà sốt bơ tỏi</div>
+
+      <div class="chips">
+        <div class="chip">25 phút</div>
+        <div class="chip">2 người</div>
+        <div class="chip">Dễ</div>
+      </div>
+
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+
+      <p class="intro">Thơm nồng mùi bơ tỏi, dễ làm, siêu hợp bữa trưa nhanh.</p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>200g ức gà</li>
+        <li>1 muỗng bơ</li>
+        <li>3 tép tỏi băm</li>
+        <li>Cơm nóng</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Ướp gà và áp chảo đến khi vàng thơm.</li>
+        <li>Thêm bơ + tỏi, đảo đều.</li>
+        <li>Đổ sốt lên cơm, thưởng thức.</li>
+      </ol>
+
+      <div class="note">Thêm hành lá hoặc ớt bột để món ăn hấp dẫn hơn.</div>
+    </div>
+
+
+    <!-- RECIPE 2 -->
+    <div class="recipe-card">
+      <img class="recipe-image" src="https://images.pexels.com/photos/806361/pexels-photo-806361.jpeg"/>
+
+      <div class="recipe-name">Mì Ý sốt cà chua</div>
+
+      <div class="chips">
+        <div class="chip">30 phút</div>
+        <div class="chip">Trung bình</div>
+      </div>
+
+      <iframe src="https://www.youtube.com/embed/6L3ZvIMwZz4" allowfullscreen></iframe>
+
+      <p class="intro">Mì Ý chua ngọt vừa phải, dễ ăn, hợp khẩu vị gia đình.</p>
+
+      <strong>Nguyên liệu</strong>
+      <ul class="pretty">
+        <li>Mì Ý</li>
+        <li>Sốt cà chua</li>
+        <li>Hành tây</li>
+        <li>Thịt băm</li>
+      </ul>
+
+      <strong>Cách làm</strong>
+      <ol class="steps">
+        <li>Xào hành tây → thêm thịt băm.</li>
+        <li>Đổ sốt cà chua vào, nấu sệt.</li>
+        <li>Luộc mì → trộn sốt → trang trí.</li>
+      </ol>
+
+      <div class="note">Có thể thêm phô mai bào để món đậm vị hơn.</div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Nhà Bếp Nhỏ – Món mặn.
+  </footer>
+
+</div>
+
+</body>
+</html>
