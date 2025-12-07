@@ -35,7 +35,7 @@
     /* NAVBAR */
     nav {
       background: white;
-      padding: 16px 24px;
+      padding: 12px 20px;
       border-radius: 18px;
       box-shadow: var(--shadow);
       border: 1px solid #ecdcd3;
@@ -44,9 +44,27 @@
       align-items: center;
     }
 
-    .logo {
+    /* Logo nhỏ xinh góc trái */
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      gap: 10px;
+    }
+
+    .logo-img {
+      height: 38px;
+      width: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .logo-text {
       font-family: "Great Vibes", cursive;
-      font-size: 32px;
+      font-size: 26px;
+      margin-top: 2px;
     }
 
     .menu a {
@@ -137,9 +155,13 @@
 
 <div class="container">
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (đã chỉnh logo) -->
   <nav>
-    <div class="logo">Crinkle Corner</div>
+    <a href="index.html" class="logo-wrap">
+      <img src="images/logo.png" class="logo-img" alt="Crinkle Corner Logo"/>
+      <span class="logo-text">Crinkle Corner</span>
+    </a>
+
     <div class="menu">
       <a href="index.html">Trang chủ</a>
       <a href="mon-man.html">Món mặn</a>
@@ -161,17 +183,17 @@
     <div class="cat-grid">
 
       <a class="cat-card" href="mon-man.html">
-        <img src="images/suon-xao-chua-ngot.jpg" alt "Món mặn"/>
+        <img src="images/suon-xao-chua-ngot.jpg" alt="Món mặn"/>
         <h3>Món mặn</h3>
       </a>
 
       <a class="cat-card" href="mon-ngot.html">
-        <img src="images/banh-pancake-chuoi.jpg" alt "Món ngọt"/>
+        <img src="images/banh-pancake-chuoi.jpg" alt="Món ngọt"/>
         <h3>Món ngọt</h3>
       </a>
 
       <a class="cat-card" href="do-uong.html">
-        <img src="images/tra-dao-cam-sa.jpg" alt "Đồ uống"/>
+        <img src="images/tra-dao-cam-sa.jpg" alt="Đồ uống"/>
         <h3>Đồ uống</h3>
       </a>
 
@@ -186,6 +208,3 @@
 
 </body>
 </html>
-
-
-
