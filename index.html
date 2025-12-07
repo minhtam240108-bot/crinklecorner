@@ -17,6 +17,9 @@
       --text: #4a3b36;
       --muted: #8b7d75;
       --shadow: 0 20px 40px rgba(0,0,0,0.06);
+
+      /* chỉnh logo banner size tại đây */
+      --banner-logo-size: 180px;
     }
 
     body {
@@ -81,29 +84,43 @@
       border-radius: 28px;
       background: linear-gradient(135deg, var(--p1), var(--p2), white);
       box-shadow: var(--shadow);
+
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 40px;
     }
 
     .banner-logo {
-      height: 80px;
-      width: 80px;
+      width: var(--banner-logo-size);
+      height: var(--banner-logo-size);
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
     }
 
     .banner-text h1 {
       font-family: "Great Vibes", cursive;
-      font-size: 48px;
-      margin-bottom: 5px;
+      font-size: 50px;
+      margin-bottom: 8px;
     }
 
     .banner-text p {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--muted);
       margin-top: 0;
+    }
+
+    /* responsive */
+    @media (max-width: 650px) {
+      .banner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .banner-logo {
+        width: 150px;
+        height: 150px;
+      }
     }
 
     /* CATEGORY SECTION */
@@ -182,7 +199,7 @@
     </div>
   </nav>
 
-  <!-- BANNER (đã thêm logo lớn) -->
+  <!-- BANNER -->
   <section class="banner">
     <img src="images/logo.png" class="banner-logo" alt="Crinkle Corner Logo"/>
 
@@ -224,3 +241,4 @@
 
 </body>
 </html>
+
