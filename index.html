@@ -44,7 +44,6 @@
       align-items: center;
     }
 
-    /* Logo nhỏ xinh góc trái */
     .logo-wrap {
       display: flex;
       align-items: center;
@@ -75,26 +74,39 @@
       font-weight: 500;
     }
 
+    /* BANNER */
     .banner {
       margin-top: 40px;
       padding: 40px;
       border-radius: 28px;
       background: linear-gradient(135deg, var(--p1), var(--p2), white);
-      text-align: center;
       box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 30px;
     }
 
-    .banner h1 {
+    .banner-logo {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    }
+
+    .banner-text h1 {
       font-family: "Great Vibes", cursive;
       font-size: 48px;
       margin-bottom: 5px;
     }
 
-    .banner p {
+    .banner-text p {
       font-size: 15px;
       color: var(--muted);
+      margin-top: 0;
     }
 
+    /* CATEGORY SECTION */
     .category-section {
       margin-top: 50px;
     }
@@ -155,7 +167,7 @@
 
 <div class="container">
 
-  <!-- NAVIGATION (đã chỉnh logo) -->
+  <!-- NAVIGATION -->
   <nav>
     <a href="index.html" class="logo-wrap">
       <img src="images/logo.png" class="logo-img" alt="Crinkle Corner Logo"/>
@@ -170,10 +182,14 @@
     </div>
   </nav>
 
-  <!-- BANNER -->
+  <!-- BANNER (đã thêm logo lớn) -->
   <section class="banner">
-    <h1>Crinkle Corner - Where cozy cooking begins</h1>
-    <p>Tasteful moments in every corner.</p>
+    <img src="images/logo.png" class="banner-logo" alt="Crinkle Corner Logo"/>
+
+    <div class="banner-text">
+      <h1>Crinkle Corner - Where cozy cooking begins</h1>
+      <p>Tasteful moments in every corner.</p>
+    </div>
   </section>
 
   <!-- CATEGORY PREVIEW -->
